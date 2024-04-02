@@ -1,0 +1,15 @@
+*
+!.gitignore
+!kitty
+!kitty/**
+
+!zsh
+!zsh/**
+zsh/plugins/**
+
+!scripts
+!scripts/**
+
+!.profile
+!.zshenv
+!README.md
