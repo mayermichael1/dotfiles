@@ -1,5 +1,5 @@
 #  use alias bake to generate compile_commands.json
-CXX := g++
+CXX := clang
 CXXFLAGS := -Wall -Wextra -Werror
 BUILD_DIR := ./build
 LDFLAGS :=
