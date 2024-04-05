@@ -5,6 +5,7 @@
 
 !zsh
 !zsh/**
+zsh/.zcompdump
 zsh/plugins/**
 
 !scripts
