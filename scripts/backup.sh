@@ -2,17 +2,23 @@
 hostname=$(uname -n)
 username=$(whoami)
 
-systempath=/run/media/$username/BackupDisk01/$hostname
+disk=/run/media/$username/BackupDisk01
+systempath=$disk/$hostname
 userpath=$systempath/$username
 
+exclude="--exclude .cache"
+exclude="$exclude --exclude .dartServer"
+exclude="$exclude --exclude .gradle/caches"
+exclude="$exclude --exclude .local/share/Trash"
 
 beginnTime=$(date +%s)
-
 
 notify-send "Backup Starting..." "Backup to Disk has started"
 pacman -Qe > $systempath/packages.txt
 mkdir -p $userpath
-rsync -a --delete /home/$username/ $userpath/
+echo "" > $systempath/progress.txt
+
+rsync -a --delete $exclude /home/$username/ $userpath/ --progress > $systempath/progress.txt
 
 endTime=$(date +%s)
 
@@ -27,3 +33,4 @@ else
     notify-send "Backup Completed" "Backup completed with error: $rsyncresult" -u critical
 fi
 
+umount $disk -l
