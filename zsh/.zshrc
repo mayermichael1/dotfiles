@@ -2,7 +2,8 @@
 #enable colors
 autoload -U colors && colors
 
-PROMPT="%B%K{green}%F{black}%m%f%k%b %K{red}%F{black}%~%f%k %K{white}%F{black}$%f%k "
+#PROMPT="%B%K{green}%F{black}%m%f%k%b %K{red}%F{black}%~%f%k %K{white}%F{black}$%f%k "
+PROMPT="%F{magenta}%~%f%F{cyan} > %f"
 
 HISTSIZE=10000
 SAVEHIST=10000
