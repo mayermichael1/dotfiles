@@ -1,5 +1,5 @@
 #  use alias bake to generate compile_commands.json
-CXX := clang
+CXX := clang++
 CXXFLAGS := -Wall -Wextra -Werror
 BUILD_DIR := ./build
 LDFLAGS :=
@@ -10,7 +10,7 @@ OBJECTS := $(BUILD_DIR)/main.o
 # add objects here like this:
 # OBJECTS += $(BUILD_DIR)/object.o
 
-CXXFLAGS += -Og -g
+CXXFLAGS += -O0 -g
 #CXXFLAGS += -O2
 
 $(BUILD_DIR)/XXXXX: $(OBJECTS)
