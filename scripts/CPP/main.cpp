@@ -1,6 +1,8 @@
-#include <iostream>
+#include <stdio.h>
 
-int main(void){
-    std::cout << "Hello XXXXX" << std::endl;
+int 
+main (void)
+{
+    printf("Hello XXXXX\n");
     return 0;
 }
