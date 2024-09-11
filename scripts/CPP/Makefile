@@ -1,31 +1,34 @@
-#  use alias bake to generate compile_commands.json
-CXX := g++
-CXXFLAGS := -Wall -Wextra -Werror
-BUILD_DIR := ./build
-LDFLAGS :=
-LDLIBS := 
-CPPFLAGS :=  -Iinclude/
+# build command for individual files
+# build command to build the bin
+# create dependencies using gcc
+# find files automatically by a wildcard
+# create object files and dep files by substituting c files
+#
+CXX=g++
+OPT=-O0
+DEPFLAGS=-MP -MD
+CXXFLAGS= $(OPT) $(DEPFLAGS) -g 
 
-OBJECTS := $(BUILD_DIR)/main.o
-# add objects here like this:
-# OBJECTS += $(BUILD_DIR)/object.o
+BUILDDIR=./output
+BINARY=$(BUILDDIR)/gen_json.out
 
-CXXFLAGS += -O0 -g
-#CXXFLAGS += -O2
 
-$(BUILD_DIR)/XXXXX: $(OBJECTS)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(OBJECTS) -o $(BUILD_DIR)/XXXXX $(LDFLAGS) $(LDLIBS)
+SRCDIRS=. src
 
-# program entry point
-$(BUILD_DIR)/main.o: main.cpp #all file includes here
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c main.cpp -o $(BUILD_DIR)/main.o
+CPPFILES:=$(foreach dir, $(SRCDIRS), $(wildcard $(dir)/*.cpp))
+OBJFILES:=$(addprefix output/, $(addsuffix .o, $(basename $(notdir $(CPPFILES)))))
+DEPFILES:=$(addprefix output/, $(addsuffix .d, $(basename $(notdir $(CPPFILES)))))
 
-# Build all Objects here
-# $(BUILD_DIR)/object.o: src/object.cpp include/object.h
-# 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c src/object.cpp -o $(BUILD_DIR)/object.o
+all: $(BINARY)
 
-.PHONY: clean
+$(BINARY) : $(OBJFILES)
+	$(CXX) $(CXXFLAGS) -o $@ $^
+
+$(BUILDDIR)/%.o : %.cpp
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+-include $(DEPFILES)
+
+.PHONY : clean
 clean: 
-	rm -rf $(BUILD_DIR)/*
-	rm ./compile_commands.json
-
+	rm $(BINARY)
