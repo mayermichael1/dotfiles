@@ -1,18 +1,28 @@
+# configuration mostly taken from:
+# https://github.com/gwu-cs-os/evening_os_hour/tree/master/f19/10.2-makefiles/03_featureful_makefile
 CXX=g++
 OPT=-O0
+DEBUG=-g
 DEPFLAGS=-MP -MD
 
 BUILDDIR=./build
+BINARY=$(BUILDDIR)/XXXXX
 SRCDIRS=. src
 INCLUDEDIRS=. include
 
+CXXFLAGS= $(OPT) $(DEPFLAGS) $(DEBUG) $(foreach dir, $(INCLUDEDIRS), -I$(dir))
+
 CPPFILES:=$(foreach dir, $(SRCDIRS), $(wildcard $(dir)/*.cpp))
-OBJFILES:=$(addprefix $(BUILDDIR)/, $(addsuffix .o, $(basename $(notdir $(CPPFILES)))))
-DEPFILES:=$(addprefix $(BUILDDIR)/, $(addsuffix .d, $(basename $(notdir $(CPPFILES)))))
 
-BINARY=$(BUILDDIR)/XXXXX
+OBJFILES:=$(patsubst %.cpp, %.o, $(CPPFILES))
+OBJFILES:=$(addprefix $(BUILDDIR)/, $(OBJFILES))
+OBJFILES:=$(patsubst ./,,$(OBJFILES))
 
-CXXFLAGS= $(OPT) $(DEPFLAGS) -g $(foreach dir, $(INCLUDEDIRS), -I$(dir))
+DEPFILES:=$(patsubst %.cpp, %.d, $(CPPFILES))
+DEPFILES:=$(addprefix $(BUILDDIR)/, $(DEPFILES))
+DEPFILES:=$(patsubst ./,,$(DEPFILES))
+
+# targets
 
 all: $(BINARY)
 
@@ -20,13 +30,14 @@ $(BINARY) : $(OBJFILES)
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
 $(BUILDDIR)/%.o : %.cpp
+	mkdir -p $(addprefix $(BUILDDIR)/, $(dir $<))
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
 -include $(DEPFILES)
 
 .PHONY : clean
 clean: 
-	rm $(BINARY)
-	rm $(DEPFILES)
-	rm $(OBJFILES)
-	rm compile_commands.json
+	rm -f $(BINARY)
+	rm -f $(DEPFILES)
+	rm -f $(OBJFILES)
+	rm -f compile_commands.json
