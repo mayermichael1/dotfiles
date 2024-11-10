@@ -1,4 +1,7 @@
 #!/bin/bash
+
+# check personal wiki to automate this script
+
 hostname=$(uname -n)
 username=$(whoami)
 
@@ -8,8 +11,15 @@ userpath=$systempath/$username
 
 exclude="--exclude .cache"
 exclude="$exclude --exclude .dartServer"
-exclude="$exclude --exclude .gradle/caches"
-exclude="$exclude --exclude .local/share/Trash"
+exclude="$exclude --exclude .gradle"
+exclude="$exclude --exclude .git-credentials"
+exclude="$exclude --exclude .local"
+exclude="$exclude --exclude .mozilla"
+exclude="$exclude --exclude .pki"
+exclude="$exclude --exclude .steam"
+exclude="$exclude --exclude .steampid"
+exclude="$exclude --exclude .steampath"
+exclude="$exclude --exclude .z"
 
 beginnTime=$(date +%s)
 
@@ -19,6 +29,7 @@ mkdir -p $userpath
 echo "" > $systempath/progress.txt
 
 rsync -a --delete $exclude /home/$username/ $userpath/ --progress > $systempath/progress.txt
+sync
 
 endTime=$(date +%s)
 
