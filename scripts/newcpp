@@ -10,8 +10,7 @@ cd $1
 
 grep -rl "XXXXX" | xargs sed -i "s/XXXXX/$1/g"
 
-cd ..
-
+git init . > /dev/null
 echo "Project $1 has been created successfully."
 exit 0
 
