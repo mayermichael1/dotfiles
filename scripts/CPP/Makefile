@@ -9,7 +9,7 @@ BUILDDIR=./build
 BINARY=$(BUILDDIR)/XXXXX
 INCLUDEDIRS=-I.
 
-$(BINARY): $(BUILDDIR)
+binary: $(BUILDDIR)
 	g++ main.cpp $(OPT) $(DEBUG) $(LIBS) $(FLAGS) $(INCLUDEDIRS) -o $(BINARY) 
 
 $(BUILDDIR):
