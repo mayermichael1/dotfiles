@@ -17,8 +17,8 @@ typedef double      f64;
 typedef uint8_t     b8;
 
 #define global_variable static
-#define internal        static;
-#define local_persist   static;
+#define internal        static
+#define local_persist   static
 
 s32 
 main (void)
