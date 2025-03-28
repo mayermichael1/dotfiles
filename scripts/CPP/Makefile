@@ -13,9 +13,9 @@ binary: $(BUILDDIR)
 	g++ main.cpp $(OPT) $(DEBUG) $(LIBS) $(FLAGS) $(INCLUDEDIRS) -o $(BINARY) 
 
 $(BUILDDIR):
-	mkdir $(BUILDDIR)
-	echo "*" > $(BUILDDIR)/.gitignore
-	echo "!.gitignore" >> $(BUILDDIR)/.gitignore
+	@mkdir $(BUILDDIR)
+	@echo "*" > $(BUILDDIR)/.gitignore
+	@echo "!.gitignore" >> $(BUILDDIR)/.gitignore
 
 .PHONY : clean
 clean: 
