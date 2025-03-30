@@ -1,5 +1,3 @@
-# configuration mostly taken from:
-# https://github.com/gwu-cs-os/evening_os_hour/tree/master/f19/10.2-makefiles/03_featureful_makefile
 OPT=-O0
 DEBUG=-g
 LIBS=
