@@ -14,6 +14,4 @@ then
     dest_user="michael" 
 fi
 
-rsync -a --no-o --no-g --delete --quiet -e ssh ~/Documents/rtest $dest_user@$dest:/home/$dest_user/Documents/
-#echo $dest_user@$dest:/home/$dest_user/Documents/rtest/
-
+rsync -a --no-o --no-g --delete --quiet -e ssh ~/Documents/University $dest_user@$dest:/home/$dest_user/Documents/
