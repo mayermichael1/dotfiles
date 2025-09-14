@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# check remote address
+hostname=$(cat /etc/hostname)
+remote_ip=""
+remote_user=""
+
+if [[ "$hostname" == "ARCHDESK" ]];
+then
+    remote_ip="192.168.178.3" 
+    remote_user="michael" 
+elif [[ "$hostname" == "Tuxi" ]];
+then
+    remote_ip="192.168.178.2" 
+    remote_user="michael" 
+fi
+
+# check script arguments
+src=""
+dest=""
+if [[ "$1" == "fetch" ]]; then
+    src="$remote_user@$remote_ip:/home/$remote_user/Documents/University/*"
+    dest="$HOME/Documents/University"
+elif [[ "$1" == "push" ]]; then
+    src="$HOME/Documents/University/*"
+    dest="$remote_user@$remote_ip:/home/$remote_user/Documents/University"
+else
+    echo "Usage: syncdoc [fetch | push]"
+fi
+
+# actual execution
+if [[ -n dest && -n src ]];
+then
+rsync -a --no-o --no-g --delete --quiet -e ssh $src $dest
+fi
+
