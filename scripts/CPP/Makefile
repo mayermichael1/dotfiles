@@ -1,7 +1,7 @@
 OPT=-O0
 DEBUG=-g
 LIBS=
-FLAGS=
+FLAGS=-std=c99
 
 BUILDDIR=./build
 BINARY=$(BUILDDIR)/XXXXX
@@ -11,8 +11,9 @@ INCLUDEDIRS=-I.
 #buildandrun: binary
 #	$(BINARY)
 
+.PHONY: binary
 binary: $(BUILDDIR)
-	g++ main.cpp $(OPT) $(DEBUG) $(LIBS) $(FLAGS) $(INCLUDEDIRS) -o $(BINARY) 
+	gcc main.c $(OPT) $(DEBUG) $(LIBS) $(FLAGS) $(INCLUDEDIRS) -o $(BINARY) 
 
 $(BUILDDIR):
 	@mkdir $(BUILDDIR)
@@ -21,5 +22,6 @@ $(BUILDDIR):
 
 .PHONY : clean
 clean: 
-	rm -f $(BINARY)
+	rm -rf $(BUILDDIR)
+	rm -rf .ccls-cache
 	rm -f compile_commands.json
