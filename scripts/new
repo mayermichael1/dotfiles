@@ -2,6 +2,7 @@
 
 project_name=$2
 type=$(echo "$1" | sed 's/.*/\U&/')
+date=$(date +%d.%m.%Y)
 
 if [[ -z "$type" ]]; then
     echo "Project type can not be empty!"
@@ -17,6 +18,7 @@ cp -r $HOME/.config/scripts/project_templates/$type ./$project_name
 cd $project_name
 
 grep -rl "<project_name>" | xargs sed -i "s/<project_name>/$project_name/g"
+grep -rl "<date>" | xargs sed -i "s/<date>/$date/g"
 
 git init . > /dev/null
 echo "$type Project $project_name has beend created successfully."
