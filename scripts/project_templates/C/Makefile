@@ -4,7 +4,7 @@ LIBS=
 FLAGS=-std=c99
 
 BUILDDIR=./build
-BINARY=$(BUILDDIR)/XXXXX
+BINARY=$(BUILDDIR)/<project_name>
 INCLUDEDIRS=-I.
 
 #.PHONY: buildandrun

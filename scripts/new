@@ -1,0 +1,23 @@
+#!/bin/bash
+
+project_name=$2
+type=$(echo "$1" | sed 's/.*/\U&/')
+
+if [[ -z "$type" ]]; then
+    echo "Project type can not be empty!"
+    exit 1
+fi
+
+if [[ -z "$project_name" ]]; then
+    echo "Project Name can not be empty!"
+    exit 1
+fi
+
+cp -r $HOME/.config/scripts/project_templates/$type ./$project_name
+cd $project_name
+
+grep -rl "<project_name>" | xargs sed -i "s/<project_name>/$project_name/g"
+
+git init . > /dev/null
+echo "$type Project $project_name has beend created successfully."
+exit 0

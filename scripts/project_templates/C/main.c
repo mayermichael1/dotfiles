@@ -5,6 +5,6 @@
 s32 
 main (void)
 {
-    printf("Hello XXXXX\n");
+    printf("Hello <project_name>\n");
     return 0;
 }
