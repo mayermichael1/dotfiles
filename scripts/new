@@ -17,8 +17,9 @@ fi
 cp -r $HOME/.config/scripts/project_templates/$type ./$project_name
 cd $project_name
 
-grep -rl "<project_name>" | xargs sed -i "s/<project_name>/$project_name/g"
-grep -rl "<date>" | xargs sed -i "s/<date>/$date/g"
+# TODO: this results in an error when nothing to be replaced is found
+grep -rl "<project_name>" | xargs sed -i "s/<project_name>/$project_name/g" 2>&1 > /dev/null
+grep -rl "<date>" | xargs sed -i "s/<date>/$date/g" 2>&1 > /dev/null
 
 git init . > /dev/null
 echo "$type Project $project_name has been created successfully."
