@@ -1,5 +1,5 @@
 BUILDDIR=./build
-HANDINNAME=k12510380_UE
+HANDINNAME=<project_name>
 
 #.PHONY: buildandrun
 #buildandrun: binary
