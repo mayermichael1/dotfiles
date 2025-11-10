@@ -7,7 +7,7 @@ HANDINNAME=<project_name>
 
 .PHONY: binary
 binary: $(BUILDDIR)
-	javac -d $(BUILDDIR) ./HelloWorld.java
+	javac -d $(BUILDDIR) *
 
 .PHONY: run
 run: binary
