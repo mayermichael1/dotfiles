@@ -6,7 +6,7 @@ local_ip=$(ip a show ${uplink} | grep 'inet\s' | awk '{print $2}' | awk -F '/' '
 user=$(whoami)
 full_path=$(realpath $1)
 
-command="scp ${user}@${local_ip}:${full_path} ."
+command="scp -r ${user}@${local_ip}:${full_path} ."
 
 wl-copy ${command}
 
