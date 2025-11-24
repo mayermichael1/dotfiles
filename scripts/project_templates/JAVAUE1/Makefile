@@ -7,7 +7,8 @@ HANDINNAME=<project_name>
 
 .PHONY: binary
 binary: $(BUILDDIR)
-	javac -d $(BUILDDIR) *.java
+	find -name "*.java" > .sources
+	javac -d $(BUILDDIR) @.sources
 
 .PHONY: run
 run: binary
@@ -30,3 +31,4 @@ clean:
 	@-rm -rf $(HANDINNAME)
 	@-rm -rf $(BUILDDIR)
 	@-rm -r $(HANDINNAME).zip
+	@-rm -r	.sources 
