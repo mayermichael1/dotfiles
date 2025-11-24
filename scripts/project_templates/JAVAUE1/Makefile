@@ -16,8 +16,7 @@ run: binary
 .PHONY: zip
 zip: $(BUILDDIR)
 	@mkdir $(HANDINNAME)
-	@cp *.java $(HANDINNAME)/ 2> /dev/null || :
-	@cp *.txt $(HANDINNAME)/ 2> /dev/null || :
+	@rsync -a --exclude '.git' --exclude "$(HANDINNAME)"  --include '*/' --include "**.java" --include "**.txt" --exclude '*' -m . $(HANDINNAME)/
 	@zip -r $(HANDINNAME).zip $(HANDINNAME) 
 	@rm -rf $(HANDINNAME)
 
