@@ -8,7 +8,7 @@ full_path=$(realpath $1)
 
 command="scp -r ${user}@${local_ip}:${full_path} ."
 
-wl-copy ${command}
+wl-copy "${command}"
 
 echo ${command}
 echo "copied to clipboard"
