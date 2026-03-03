@@ -1,37 +1,42 @@
 \documentclass[a4paper]{article}
 
+\usepacakge[german]{babel}
+\usepackage{amsmath}
+\usepackage[parse-numbers=false]{siunitx}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage[european,straightvoltages]{circuitikz}
+\usepackage{subcaption}
+
 \title{<project_name>}
 \date{<date>}
 \author{Michael Mayer}
 
 \begin{document}
     
-    % document setup
+  % document setup
+  \pagenumbering{arabic}
+  \maketitle
 
-    \pagenumbering{arabic}
-    \maketitle
+  \newpage
 
-    \newpage
+  % table of contents
+  \pagenumbering{arabic}
+  \tableofcontents
 
-    % table of contents
+  \newpage
 
-    \pagenumbering{arabic}
-    \tableofcontents
-
-    \newpage
-
-    \section{<project_name>}
+  \section{<project_name>}
 
     Start the document here...
 
-    % apendix
-
-    \newpage
-    \begin{appendix}
-        \bibliography{books}
-        \bibliographystyle{ieeetr}
-        \listoffigures
-        \listoftables
-    \end{appendix}
+  % appendix
+  \newpage
+  \begin{appendix}
+      \bibliography{books}
+      \bibliographystyle{ieeetr}
+      \listoffigures
+      \listoftables
+  \end{appendix}
 
 \end{document}
