@@ -3,6 +3,7 @@
 hostname=$(cat /etc/hostname)
 remote_ip=""
 remote_user=""
+message=""
 
 if [[ "$hostname" == "ARCHDESK" ]];
 then
@@ -18,16 +19,24 @@ fi
 if [[ "$1" == "fetch" ]]; then
     src="$remote_user@$remote_ip:/home/$remote_user/Documents/University"
     dest="$HOME/Documents/"
+    message="This will REPLACE the current files on THIS PC are you sure? (YES): "
 elif [[ "$1" == "push" ]]; then
     src="$HOME/Documents/University"
     dest="$remote_user@$remote_ip:/home/$remote_user/Documents/"
+    message="This will REPLACE the current files on the OTHER PC are you sure? (YES): "
 else
     echo "Usage: syncdoc [fetch | push]"
 fi
 
-# actual execution
-if [[ -n "$dest" && -n "$src" ]];
-then
-    rsync -a --no-o --no-g --delete --quiet -e ssh $src $dest
+read -p "$message" prompt
+if [[ $prompt == "YES" ]]; then
+    # actual execution
+    if [[ -n "$dest" && -n "$src" ]];
+    then
+        rsync -a --no-o --no-g --delete --quiet -e ssh $src $dest
+    fi
+else
+    echo "quit"
 fi
+
 
