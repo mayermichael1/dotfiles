@@ -1,4 +1,4 @@
-alias ls='ls --color=auto --group-directories-first'
+alias ls='ls --color=auto --group-directories-first -p'
 alias ll='ls -la'
 
 alias grep='grep --color=auto'
