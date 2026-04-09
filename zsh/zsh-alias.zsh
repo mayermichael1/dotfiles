@@ -9,4 +9,4 @@ alias make='echo "Use bake to create compile_commands.json"; make'
 alias mvim='env NVIM_APPNAME=mvim nvim'
 
 alias tuni1='tagtime -f ~/Documents/University/2025WS/tagtime.data'
-alias tuni2='tagtime -f ~/Documents/University/2026WS/tagtime.data'
+alias tuni2='tagtime -f ~/Documents/University/2026SS/tagtime.data'
