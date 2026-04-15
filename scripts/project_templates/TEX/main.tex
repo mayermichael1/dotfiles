@@ -1,12 +1,4 @@
-\documentclass[a4paper]{article}
-
-\usepackage[german]{babel}
-\usepackage{amsmath}
-\usepackage[parse-numbers=false]{siunitx}
-\usepackage{graphicx}
-\usepackage{tikz}
-\usepackage[european,straightvoltages]{circuitikz}
-\usepackage{subcaption}
+\input{setup.tex}
 
 \title{<project_name>}
 \date{<date>}
@@ -33,8 +25,11 @@
   % appendix
   \newpage
   \begin{appendix}
-      \bibliography{books}
-      \bibliographystyle{ieeetr}
+      %\bibliography{books}
+      %\bibliographystyle{ieeetr}
+      \begin{thebibliography}{0pt}
+          %\bibitem[Name]{ref} ... text
+      \end{thebibliography}
       \listoffigures
       \listoftables
   \end{appendix}
