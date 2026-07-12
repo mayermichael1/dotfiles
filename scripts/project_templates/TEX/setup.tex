@@ -1,22 +1,58 @@
-\documentclass[a4paper]{article}
+\documentclass[a4paper, 11pt, twoside]{article}
 
 \usepackage[utf8]{inputenc}
 \usepackage[naustrian]{babel}
-
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage[parse-numbers=false]{siunitx}
-
+\usepackage[T1]{fontenc}
+\usepackage[
+  twoside,
+  a4paper,
+  inner=20mm,
+  outer=20mm,
+  top=20mm,
+  bottom=20mm,
+  includehead,
+  includefoot,
+  headsep=10mm,
+  footskip=10mm,
+]{geometry}
+%TODO: maybe foot distance is still wrong?
+\usepackage{fancyhdr}
+\usepackage{lipsum}
 \usepackage{graphicx}
-\usepackage{subcaption}
-\usepackage{tikz}
-\usepackage[european,straightvoltages]{circuitikz}
-
 \usepackage[hidelinks]{hyperref}
 \usepackage{url}
+\usepackage{amssymb}
+\usepackage{amsmath}
 
+\newcommand{\sitenr}{\thepage}
+\newcommand{\sectiontext}{\leftmark}
+\newcommand{\mycopyright}{\textcopyright{} Michael Mayer (k12510380)}
+
+% do not indent paragraphs but set a line skip
+\setlength{\parindent}{0mm}
 \setlength{\parskip}{1.1ex plus 0.25ex minus 0.25ex}
-\setlength{\parindent}{0em}
+
+%page style for all pages
+%     E   | O
+% H:  L R | L R 
+% F:  L R | L R 
+\fancypagestyle{plain}{
+  \fancyhf{}% clear all header and footer fields
+  \fancyhf[ELH]{\sitenr}
+  \fancyhf[ORH]{\sitenr}
+
+  \fancyhf[ERH]{\sectiontext}
+  \fancyhf[OLH]{\sectiontext}
+
+  \fancyhf[ELF]{\mycopyright}
+  \fancyhf[ORF]{\mycopyright}
+}
+
+\pagestyle{plain}
+
+\renewcommand{\footrulewidth}{1.25pt}
+\renewcommand{\headrulewidth}{1.25pt}
 
 \newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
 \newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
