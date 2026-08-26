@@ -10,3 +10,4 @@ alias mvim='env NVIM_APPNAME=mvim nvim'
 
 alias tuni1='tagtime -f ~/Documents/University/2025WS/tagtime.data'
 alias tuni2='tagtime -f ~/Documents/University/2026SS/tagtime.data'
+alias tuni3='tagtime -f ~/Documents/University/2026WS/tagtime.data'
