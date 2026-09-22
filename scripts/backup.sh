@@ -9,17 +9,17 @@ disk=/run/media/$username/BackupDisk01
 systempath=$disk/$hostname
 userpath=$systempath/$username
 
-exclude="--exclude .cache"
-exclude="$exclude --exclude .dartServer"
-exclude="$exclude --exclude .gradle"
-exclude="$exclude --exclude .git-credentials"
-exclude="$exclude --exclude .local"
-exclude="$exclude --exclude .mozilla"
-exclude="$exclude --exclude .pki"
-exclude="$exclude --exclude .steam"
-exclude="$exclude --exclude .steampid"
-exclude="$exclude --exclude .steampath"
-exclude="$exclude --exclude .z"
+exclude="--exclude ./.cache"
+exclude="$exclude --exclude ./.dartServer"
+exclude="$exclude --exclude ./.gradle"
+exclude="$exclude --exclude ./.git-credentials"
+exclude="$exclude --exclude ./.local"
+exclude="$exclude --exclude ./.mozilla"
+exclude="$exclude --exclude ./.pki"
+exclude="$exclude --exclude ./.steam"
+exclude="$exclude --exclude ./.steampid"
+exclude="$exclude --exclude ./.steampath"
+exclude="$exclude --exclude ./.z"
 
 beginnTime=$(date +%s)
 
