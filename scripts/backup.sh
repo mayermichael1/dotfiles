@@ -24,7 +24,9 @@ exclude="$exclude --exclude .z"
 beginnTime=$(date +%s)
 
 notify-send "Backup Starting..." "Backup to Disk has started"
-pacman -Qe > $systempath/packages.txt
+# pacman -Qe > $systempath/packages_arch.txt
+dnf repoquery --userinstalled > $systempath/packages_fedora.txt
+flatpak list --app > $systempath/packages_flatpak.txt
 mkdir -p $userpath
 echo "" > $systempath/progress.txt
 
