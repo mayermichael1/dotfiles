@@ -5,7 +5,7 @@ remote_ip=""
 remote_user=""
 message=""
 
-if [[ "$hostname" == "ARCHDESK" ]];
+if [[ "$hostname" == "Archdesk" ]];
 then
     remote_ip="192.168.178.3" 
     remote_user="michael" 
